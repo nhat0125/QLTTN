@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/views/giangvien/footer.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/giangvien/giangvien.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/giangvien/index.jsp=UTF-8
+encoding//WebContent/WEB-INF/views/sinhvien/index.jsp=UTF-8
+encoding//WebContent/index.jsp=UTF-8
+encoding//src/qlttn/controller/GiangVienController.java=UTF-8
+encoding//src/qlttn/controller/LogController.java=UTF-8
+encoding//src/qlttn/controller/SinhVienController.java=UTF-8
+encoding//src/qlttn/entity/CauHoiEntity.java=UTF-8
+encoding//src/qlttn/entity/MonHocEntity.java=UTF-8
+encoding//src/qlttn/entity/TaiKhoanEntity.java=UTF-8
+encoding//src/test/Test.java=UTF-8
