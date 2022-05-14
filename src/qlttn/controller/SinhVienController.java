@@ -1,6 +1,9 @@
 package qlttn.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -23,6 +26,7 @@ import retrofit2.Response;
 @Controller
 @RequestMapping("sinhvien")
 public class SinhVienController {
+	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	public static MonHocEntity mH = null;
 	public static List<CauHoiEntity> DS = null;
 	int demCau = -1;
@@ -134,7 +138,8 @@ public class SinhVienController {
 			DS.get(demCau - 1).setLuaChon(ch.getLuaChon());
 			diem = getDiem();
 			ChiTietThiEntity ctt = new ChiTietThiEntity();
-			ctt.setNgayThi(new java.util.Date(millis));
+			Date ngayThi = new java.util.Date(millis);
+			ctt.setNgayThi(String.valueOf(dateFormat.format(ngayThi)));
 			ctt.setDiem(diem);
 			ctt.setHoTen(LogController.tKHT.getHo() + " " + LogController.tKHT.getTen());
 			ctt.setMaMonHoc(mH.getMaMonHoc());

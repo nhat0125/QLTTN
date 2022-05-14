@@ -7,8 +7,7 @@ import java.util.Date;
 public class ChiTietThiEntity { 
 	private int idCTT;
 	
-	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    private Date ngayThi;
+    private String ngayThi;
 
     private double diem;
 
@@ -24,7 +23,7 @@ public class ChiTietThiEntity {
 		super();
 	}
 
-	public ChiTietThiEntity(int idCTT, Date ngayThi, double diem, String maTaiKhoan, String maMonHoc, String hoTen,
+	public ChiTietThiEntity(int idCTT, String ngayThi, double diem, String maTaiKhoan, String maMonHoc, String hoTen,
 			String tenMonHoc) {
 		super();
 		this.idCTT = idCTT;
@@ -45,10 +44,10 @@ public class ChiTietThiEntity {
 	}
 
 	public String getNgayThi() {
-		return dateFormat.format(ngayThi);
+		return ngayThi;
 	}
 
-	public void setNgayThi(Date ngayThi) {
+	public void setNgayThi(String ngayThi) {
 		this.ngayThi = ngayThi;
 	}
 
