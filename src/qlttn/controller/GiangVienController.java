@@ -34,6 +34,8 @@ public class GiangVienController {
 	public static TaiKhoanEntity tK = null; // lấy tài khoản cần sửa
 	public static CauHoiEntity cH = null; // câu hỏi cần sửa
 	public static MonHocEntity mH = null; // môn học cần sửa
+	public static String success;
+	public static String error;
 
 	public void layDSGiangVien() {
 		TaiKhoanAPI.apiTaiKhoanService.layDSTheoLoai("GV", "#").enqueue(new Callback<List<TaiKhoanEntity>>() {
@@ -44,7 +46,7 @@ public class GiangVienController {
 
 			@Override
 			public void onFailure(Call<List<TaiKhoanEntity>> call, Throwable t) {
-				System.out.println("Xảy ra lỗi khi lấy danh sách!");
+				error = "Lấy danh sách không thành công!";
 
 			}
 		});
@@ -61,7 +63,7 @@ public class GiangVienController {
 
 			@Override
 			public void onFailure(Call<List<TaiKhoanEntity>> call, Throwable t) {
-				System.out.println("Xảy ra lỗi khi lấy danh sách!");
+				error = "Lấy danh sách không thành công!";
 
 			}
 		});
@@ -79,7 +81,7 @@ public class GiangVienController {
 
 			@Override
 			public void onFailure(Call<List<CauHoiEntity>> call, Throwable t) {
-				System.out.println("Xảy ra lỗi khi lấy danh sách!");
+				error = "Lấy danh sách không thành công!";
 
 			}
 		});
@@ -92,7 +94,7 @@ public class GiangVienController {
 			@Override
 			public void onResponse(Call<TaiKhoanEntity> call, Response<TaiKhoanEntity> response) {
 				if (response.isSuccessful()) {
-					System.out.println("Thêm tài khoản thành công!");
+					success = "Thêm tài khoản thành công!";
 					return;
 				}
 
@@ -100,8 +102,8 @@ public class GiangVienController {
 
 			@Override
 			public void onFailure(Call<TaiKhoanEntity> call, Throwable t) {
-				System.out.println("Xảy ra lỗi khi thêm tài khoản!");
-
+				error = "Thêm tài khoản không thành công!";
+				System.out.print("Thêm thất bại");
 			}
 		});
 	}
@@ -113,7 +115,7 @@ public class GiangVienController {
 			@Override
 			public void onResponse(Call<CauHoiEntity> call, Response<CauHoiEntity> response) {
 				if (response.isSuccessful()) {
-					System.out.println("Thêm câu hỏi thành công!");
+					success = "Thêm câu hỏi thành công!";
 					return;
 				}
 
@@ -121,7 +123,7 @@ public class GiangVienController {
 
 			@Override
 			public void onFailure(Call<CauHoiEntity> call, Throwable t) {
-				System.out.println("Xảy ra lỗi khi thêm câu hỏi!");
+				error = "Thêm câu hỏi không thành công!";
 
 			}
 		});
@@ -134,7 +136,7 @@ public class GiangVienController {
 			@Override
 			public void onResponse(Call<MonHocEntity> call, Response<MonHocEntity> response) {
 				if (response.isSuccessful()) {
-					System.out.println("Thêm môn học thành công!");
+					success = "Thêm môn học thành công!";
 					return;
 				}
 
@@ -142,7 +144,7 @@ public class GiangVienController {
 
 			@Override
 			public void onFailure(Call<MonHocEntity> call, Throwable t) {
-				// TODO Auto-generated method stub
+				error = "Thêm môn học không thành công!";
 
 			}
 		});
@@ -216,7 +218,7 @@ public class GiangVienController {
 
 					@Override
 					public void onFailure(Call<List<ChiTietThiEntity>> call, Throwable t) {
-						// TODO Auto-generated method stub
+						error =  "Lấy danh sách không thành công!";
 
 					}
 				});
@@ -229,7 +231,7 @@ public class GiangVienController {
 			@Override
 			public void onResponse(Call<TaiKhoanEntity> call, Response<TaiKhoanEntity> response) {
 				if (response.isSuccessful()) {
-					System.out.println("Sửa tài khoản thành công!");
+					success = "Sửa tài khoản thành công!";
 					return;
 				}
 
@@ -237,8 +239,7 @@ public class GiangVienController {
 
 			@Override
 			public void onFailure(Call<TaiKhoanEntity> call, Throwable t) {
-				System.out.println("Xảy ra lỗi khi sửa tài khoản!");
-
+				error = "Sửa tài khoản không thành công!";
 			}
 		});
 	}
@@ -250,7 +251,7 @@ public class GiangVienController {
 			@Override
 			public void onResponse(Call<CauHoiEntity> call, Response<CauHoiEntity> response) {
 				if (response.isSuccessful()) {
-					System.out.println("Sửa câu hỏi thành công!");
+					success = "Sửa câu hỏi thành công!";
 					return;
 				}
 
@@ -258,7 +259,7 @@ public class GiangVienController {
 
 			@Override
 			public void onFailure(Call<CauHoiEntity> call, Throwable t) {
-				// TODO Auto-generated method stub
+				error = "Sửa câu hỏi không thành công!";
 
 			}
 		});
@@ -271,7 +272,7 @@ public class GiangVienController {
 			@Override
 			public void onResponse(Call<MonHocEntity> call, Response<MonHocEntity> response) {
 				if (response.isSuccessful()) {
-					System.out.println("Sửa môn học thành công!");
+					success = "Sửa môn học thành công!";
 					return;
 				}
 
@@ -279,7 +280,7 @@ public class GiangVienController {
 
 			@Override
 			public void onFailure(Call<MonHocEntity> call, Throwable t) {
-				// TODO Auto-generated method stub
+				error = "Sửa môn học không thành công!";
 
 			}
 		});
@@ -292,7 +293,7 @@ public class GiangVienController {
 			@Override
 			public void onResponse(Call<Void> call, Response<Void> response) {
 				if (response.isSuccessful()) {
-					System.out.println("Xóa tài khoản thành công!");
+					success = "Xóa tài khoản thành công!";
 					return;
 				}
 
@@ -300,8 +301,7 @@ public class GiangVienController {
 
 			@Override
 			public void onFailure(Call<Void> call, Throwable t) {
-				System.out.println("Xảy ra lỗi khi xóa tài khoản!");
-
+				error = "Xoá tài khoản không thành công!";
 			}
 		});
 	}
@@ -313,7 +313,7 @@ public class GiangVienController {
 			@Override
 			public void onResponse(Call<Void> call, Response<Void> response) {
 				if (response.isSuccessful()) {
-					System.out.println("Xóa câu hỏi thành công!");
+					success = "Xóa câu hỏi thành công!";
 					return;
 				}
 
@@ -321,7 +321,7 @@ public class GiangVienController {
 
 			@Override
 			public void onFailure(Call<Void> call, Throwable t) {
-				System.out.println("Xảy ra lỗi khi xóa câu hỏi!");
+				error = "Xoá câu hỏi không thành công!";
 
 			}
 		});
@@ -334,7 +334,7 @@ public class GiangVienController {
 			@Override
 			public void onResponse(Call<Void> call, Response<Void> response) {
 				if (response.isSuccessful()) {
-					System.out.println("Xóa môn học thành công!");
+					success = "Xóa môn học thành công!";
 					return;
 				}
 
@@ -342,7 +342,7 @@ public class GiangVienController {
 
 			@Override
 			public void onFailure(Call<Void> call, Throwable t) {
-				// TODO Auto-generated method stub
+				error = "Xoá môn học không thành công!";
 
 			}
 		});
@@ -358,32 +358,42 @@ public class GiangVienController {
 
 			@Override
 			public void onFailure(Call<List<MonHocEntity>> call, Throwable t) {
-				System.out.println("Xảy ra lỗi khi lấy danh sách!");
+				error = "Lấy danh sách không thành công!";
 
 			}
 		});
 		return;
 	}
+	
+	public void resetMessage(){
+		success = "";
+		error = "";
+	}
 
 	// ---------TAI KHOAN GIANG VIEN-----------------------------
 	@RequestMapping("dsgiangvien")
 	public String layDSGiangVien(ModelMap model) throws Exception {
+		resetMessage();
 		layDSGiangVien();
-		Thread.sleep(1500);
+		Thread.sleep(1000);
 		model.addAttribute("giangvien", new TaiKhoanEntity());
 		model.addAttribute("dsgiangvien", dSGiangVien);
 		model.addAttribute("btnTrangThai", "btnAdd");
+		model.addAttribute("error", error);
 		return "giangvien/giangvien";
 	}
 
 	@RequestMapping(value = "tsxgv", params = "btnAdd")
 	public String themGiangVien(ModelMap model, @Validated @ModelAttribute("giangvien") TaiKhoanEntity giangVien,
 			BindingResult errors) throws Exception {
+		resetMessage();
 		giangVien.setLoai("GV");
 		themTaiKhoan(giangVien);
-		Thread.sleep(1500);
+		Thread.sleep(1000);
+		model.addAttribute("success", success);
+		model.addAttribute("error", error);
 		layDSGiangVien();
-		Thread.sleep(1500);
+		Thread.sleep(1000);
 		model.addAttribute("giangvien", new TaiKhoanEntity());
 		model.addAttribute("dsgiangvien", dSGiangVien);
 		model.addAttribute("btnTrangThai", "btnAdd");
@@ -393,7 +403,7 @@ public class GiangVienController {
 	@RequestMapping(value = "/{maTaiKhoan}.htm", params = "linkEdit")
 	public String suaGiangVien(ModelMap model, @PathVariable("maTaiKhoan") String maTaiKhoan) throws Exception {
 		layTaiKhoan(maTaiKhoan);
-		Thread.sleep(1500);
+		Thread.sleep(1000);
 		model.addAttribute("giangvien", tK);
 		model.addAttribute("dsgiangvien", dSGiangVien);
 		model.addAttribute("btnTrangThai", "btnEdit");
@@ -403,11 +413,14 @@ public class GiangVienController {
 	@RequestMapping(value = "tsxgv", params = "btnEdit")
 	public String suaGiangVien(ModelMap model, @Validated @ModelAttribute("giangvien") TaiKhoanEntity giangVien,
 			BindingResult errors) throws Exception {
+		resetMessage();
 		giangVien.setLoai("GV");
 		suaTaiKhoan(giangVien);
-		Thread.sleep(1500);
+		Thread.sleep(1000);
+		model.addAttribute("success", success);
+		model.addAttribute("error", error);
 		layDSGiangVien();
-		Thread.sleep(1500);
+		Thread.sleep(1000);
 		model.addAttribute("giangvien", new TaiKhoanEntity());
 		model.addAttribute("dsgiangvien", dSGiangVien);
 		model.addAttribute("btnTrangThai", "btnAdd");
@@ -416,10 +429,13 @@ public class GiangVienController {
 
 	@RequestMapping(value = "/{maTaiKhoan}.htm", params = "linkDelete")
 	public String xoaGiangVien(ModelMap model, @PathVariable("maTaiKhoan") String maTaiKhoan) throws Exception {
+		resetMessage();
 		xoaTaiKhoan(maTaiKhoan);
-		Thread.sleep(1500);
+		Thread.sleep(1000);
+		model.addAttribute("success", success);
+		model.addAttribute("error", error);
 		layDSGiangVien();
-		Thread.sleep(1500);
+		Thread.sleep(1000);
 		model.addAttribute("giangvien", new TaiKhoanEntity());
 		model.addAttribute("dsgiangvien", dSGiangVien);
 		return "giangvien/giangvien";
@@ -428,22 +444,27 @@ public class GiangVienController {
 	// -------TAI KHOAN SINH  VIEN-----------------------------
 	@RequestMapping("dssinhvien")
 	public String qLSinhVien(ModelMap model) throws Exception {
+		resetMessage();
 		layDSSinhVien();
-		Thread.sleep(1500);
+		Thread.sleep(1000);
 		model.addAttribute("sinhvien", new TaiKhoanEntity());
 		model.addAttribute("dssinhvien", dSSinhVien);
 		model.addAttribute("btnTrangThai", "btnAdd");
+		model.addAttribute("error", error);
 		return "giangvien/sinhvien";
 	}
 
 	@RequestMapping(value = "tsxsv", params = "btnAdd")
 	public String themSinhVien(ModelMap model, @Validated @ModelAttribute("sinhvien") TaiKhoanEntity sinhVien,
 			BindingResult errors) throws Exception {
+		resetMessage();
 		sinhVien.setLoai("SV");
 		themTaiKhoan(sinhVien);
-		Thread.sleep(1500);
+		Thread.sleep(1000);
+		model.addAttribute("success", success);
+		model.addAttribute("error", error);
 		layDSSinhVien();
-		Thread.sleep(1500);
+		Thread.sleep(1000);
 		model.addAttribute("sinhvien", new TaiKhoanEntity());
 		model.addAttribute("dssinhvien", dSSinhVien);
 		model.addAttribute("btnTrangThai", "btnAdd");
@@ -453,7 +474,7 @@ public class GiangVienController {
 	@RequestMapping(value = "/{maTaiKhoan}.htm", params = "linkEdit2")
 	public String suaSinhVien(ModelMap model, @PathVariable("maTaiKhoan") String maTaiKhoan) throws Exception {
 		layTaiKhoan(maTaiKhoan);
-		Thread.sleep(1500);
+		Thread.sleep(1000);
 		model.addAttribute("sinhvien", tK);
 		model.addAttribute("dssinhvien", dSSinhVien);
 		model.addAttribute("btnTrangThai", "btnEdit");
@@ -463,11 +484,14 @@ public class GiangVienController {
 	@RequestMapping(value = "tsxsv", params = "btnEdit")
 	public String suaSinhVien(ModelMap model, @Validated @ModelAttribute("sinhvien") TaiKhoanEntity sinhVien,
 			BindingResult errors) throws Exception {
+		resetMessage();
 		sinhVien.setLoai("SV");
 		suaTaiKhoan(sinhVien);
-		Thread.sleep(1500);
+		Thread.sleep(1000);
+		model.addAttribute("success", success);
+		model.addAttribute("error", error);
 		layDSSinhVien();
-		Thread.sleep(1500);
+		Thread.sleep(1000);
 		model.addAttribute("sinhvien", new TaiKhoanEntity());
 		model.addAttribute("dssinhvien", dSSinhVien);
 		model.addAttribute("btnTrangThai", "btnAdd");
@@ -476,10 +500,13 @@ public class GiangVienController {
 
 	@RequestMapping(value = "/{maTaiKhoan}.htm", params = "linkDelete2")
 	public String xoaSinhVien(ModelMap model, @PathVariable("maTaiKhoan") String maTaiKhoan) throws Exception {
+		resetMessage();
 		xoaTaiKhoan(maTaiKhoan);
-		Thread.sleep(1500);
+		Thread.sleep(1000);
+		model.addAttribute("success", success);
+		model.addAttribute("error", error);
 		layDSSinhVien();
-		Thread.sleep(1500);
+		Thread.sleep(1000);
 		model.addAttribute("sinhvien", new TaiKhoanEntity());
 		model.addAttribute("dssinhvien", dSSinhVien);
 		return "giangvien/sinhvien";
@@ -512,11 +539,12 @@ public class GiangVienController {
 	@RequestMapping(value = "tsxch", params = "btnAdd")
 	public String themCauHoi(ModelMap model, @Validated @ModelAttribute("cauhoi") CauHoiEntity cauHoi,
 			BindingResult errors) throws Exception {
+		resetMessage();
 		cauHoi.setMaTaiKhoan(LogController.tKHT.getMaTaiKhoan());
-		System.out.println(cauHoi.getNoiDung() + cauHoi.getA() + cauHoi.getB() + cauHoi.getC() + cauHoi.getD() + " "
-				+ cauHoi.getDapAn() + " " + cauHoi.getMaMonHoc() + " " + cauHoi.getMaTaiKhoan());
 		themCauHoi(cauHoi);
-		Thread.sleep(1500);
+		Thread.sleep(1000);
+		model.addAttribute("success", success);
+		model.addAttribute("error", error);
 		layDSCauHoi();
 		layDSMonHoc();
 		Thread.sleep(2000);
@@ -530,7 +558,7 @@ public class GiangVienController {
 	@RequestMapping(value = "/{idCH}.htm", params = "linkEdit3")
 	public String suaCauHoi(ModelMap model, @PathVariable("idCH") Integer idCH) throws Exception {
 		layCauHoi(idCH);
-		Thread.sleep(1500);
+		Thread.sleep(1000);
 		model.addAttribute("cauhoi", cH);
 		model.addAttribute("dscauhoi", dSCauHoi);
 		model.addAttribute("btnTrangThai", "btnEdit");
@@ -541,11 +569,13 @@ public class GiangVienController {
 	@RequestMapping(value = "tsxch", params = "btnEdit")
 	public String suaCauHoi(ModelMap model, @Validated @ModelAttribute("cauhoi") CauHoiEntity cauHoi,
 			BindingResult errors) throws Exception {
+		resetMessage();
 		cauHoi.setMaTaiKhoan(LogController.tKHT.getMaTaiKhoan());
 		cauHoi.setIdCH(cH.getIdCH());
 		suaCauHoi(cauHoi);
-		//System.out.println(cauHoi.getIdCH() +"/" + cauHoi.getNoiDung() +"/"+ cauHoi.getA() + "/" + cauHoi.getB() + "/" + cauHoi.getC()+ "/"+ cauHoi.getD() +"/"+  cauHoi.getDapAn() + "/" + cauHoi.getMaMonHoc() + "/" + cauHoi.getMaTaiKhoan());
-		Thread.sleep(1500);
+		Thread.sleep(1000);
+		model.addAttribute("success", success);
+		model.addAttribute("error", error);
 		layDSCauHoi();
 		layDSMonHoc();
 		Thread.sleep(2000);
@@ -558,8 +588,11 @@ public class GiangVienController {
 
 	@RequestMapping(value = "/{idCH}.htm", params = "linkDelete3")
 	public String xoaCauHoi(ModelMap model, @PathVariable("idCH") Integer idCH) throws Exception {
+		resetMessage();
 		xoaCauHoi(idCH);
-		Thread.sleep(1500);
+		Thread.sleep(1000);
+		model.addAttribute("success", success);
+		model.addAttribute("error", error);
 		layDSCauHoi();
 		layDSMonHoc();
 		Thread.sleep(2000);
@@ -574,7 +607,7 @@ public class GiangVienController {
 	@RequestMapping("dsmonhoc")
 	public String qLMonHoc(ModelMap model) throws Exception {
 		layDSMonHoc();
-		Thread.sleep(1500);
+		Thread.sleep(1000);
 		model.addAttribute("monhoc", new MonHocEntity());
 		model.addAttribute("dsmonhoc", dSMonHoc);
 		model.addAttribute("btnTrangThai", "btnAdd");
@@ -584,10 +617,13 @@ public class GiangVienController {
 	@RequestMapping(value = "tsxmh", params = "btnAdd")
 	public String themMonHoc(ModelMap model, @Validated @ModelAttribute("monhoc") MonHocEntity monHoc,
 			BindingResult errors) throws Exception {
+		resetMessage();
 		themMonHoc(monHoc);
-		Thread.sleep(1500);
+		Thread.sleep(1000);
+		model.addAttribute("success", success);
+		model.addAttribute("error", error);
 		layDSMonHoc();
-		Thread.sleep(1500);
+		Thread.sleep(1000);
 		model.addAttribute("monhoc", new MonHocEntity());
 		model.addAttribute("btnTrangThai", "btnAdd");
 		model.addAttribute("monHoc", dSMonHoc);
@@ -597,9 +633,9 @@ public class GiangVienController {
 	@RequestMapping(value = "/{maMonHoc}.htm", params = "linkEdit4")
 	public String suaMonHoc(ModelMap model, @PathVariable("maMonHoc") String maMonHoc) throws Exception {
 		layMonHoc(maMonHoc);
-		Thread.sleep(1500);
+		Thread.sleep(1000);
 		layDSMonHoc();
-		Thread.sleep(1500);
+		Thread.sleep(1000);
 		model.addAttribute("monhoc", mH);
 		model.addAttribute("btnTrangThai", "btnEdit");
 		model.addAttribute("monHoc", dSMonHoc);
@@ -609,10 +645,13 @@ public class GiangVienController {
 	@RequestMapping(value = "tsxmh", params = "btnEdit")
 	public String suaMonHoc(ModelMap model, @Validated @ModelAttribute("monhoc") MonHocEntity monHoc,
 			BindingResult errors) throws Exception {
+		resetMessage();
 		suaMonHoc(monHoc);
-		Thread.sleep(1500);
+		Thread.sleep(1000);
+		model.addAttribute("success", success);
+		model.addAttribute("error", error);
 		layDSMonHoc();
-		Thread.sleep(1500);
+		Thread.sleep(1000);
 		model.addAttribute("monhoc", new MonHocEntity());
 		model.addAttribute("btnTrangThai", "btnAdd");
 		model.addAttribute("monHoc", dSMonHoc);
@@ -621,10 +660,13 @@ public class GiangVienController {
 
 	@RequestMapping(value = "/{maMonHoc}.htm", params = "linkDelete4")
 	public String xoaMonHoc(ModelMap model, @PathVariable("maMonHoc") String maMonHoc) throws Exception {
+		resetMessage();
 		xoaMonHoc(maMonHoc);
-		Thread.sleep(1500);
+		Thread.sleep(1000);
+		model.addAttribute("success", success);
+		model.addAttribute("error", error);
 		layDSMonHoc();
-		Thread.sleep(1500);
+		Thread.sleep(1000);
 		model.addAttribute("monhoc", new MonHocEntity());
 		model.addAttribute("dsmonhoc", dSMonHoc);
 		model.addAttribute("btnTrangThai", "btnAdd");
@@ -643,6 +685,7 @@ public class GiangVienController {
 
 	@RequestMapping("chitietthi2")
 	public String chiTietThi2(ModelMap model, @ModelAttribute("MHOC") MonHocEntity mh) throws Exception {
+		resetMessage();
 		layDSCTT(mh.getMaMonHoc());
 		Thread.sleep(2000);
 		if (mh.getMaMonHoc() == null) {
@@ -657,9 +700,7 @@ public class GiangVienController {
 				return "giangvien/chitietthi";
 			} else {
 				model.addAttribute("dsctt", dSCTT);
-				for (ChiTietThiEntity a : dSCTT){
-					System.out.println(a.getNgayThi());
-				}
+				model.addAttribute("error", error);
 				return "giangvien/chitietthi2";
 			}
 		}

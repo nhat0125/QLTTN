@@ -78,13 +78,6 @@ public class LogController {
 
 	@RequestMapping("login")
 	public String login(ModelMap model, @ModelAttribute("taikhoan") TaiKhoanEntity tKKT) throws Exception {
-		/*
-		 * Gson gson3 = new Gson(); String json3 =
-		 * readUrl("https://qlttn.herokuapp.com/api/taikhoan/danhsach");
-		 * TaiKhoanEntity[] list = gson3.fromJson(json3,
-		 * TaiKhoanEntity[].class);
-		 */
-
 		if (DSTaiKhoan != null) {
 			for (TaiKhoanEntity tK : DSTaiKhoan) {
 				if (tKKT.getMaTaiKhoan().equals(tK.getMaTaiKhoan()) && tKKT.getMatKhau().equals(tK.getMatKhau())) {

@@ -48,6 +48,8 @@
 					&nbsp;
 				</div>
 			<button name="${btnTrangThai}" class="btn btn-success">Lưu</button>
+			<p5 class="text-success">${success}</p5>
+			<p5 class="text-danger">${error}</p5>
 		</form:form>
 		</div>
 		</div>

@@ -52,7 +52,7 @@
                     </div>
                     <label>Mật khẩu</label>
                     <div class="mb-3">
-                      <form:input path="matKhau" class="form-control" placeholder="Nhập mật khẩu" aria-label="Password" aria-describedby="password-addon"/>
+                      <form:input type="password" path="matKhau" class="form-control" placeholder="Nhập mật khẩu" aria-label="Password" aria-describedby="password-addon"/>
                       <form:errors path="matKhau"></form:errors>
                     </div>
                     <div class="text-center">
